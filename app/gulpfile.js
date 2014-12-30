@@ -161,6 +161,7 @@ gulp.task('cordova',['lint', 'clean:cordova:css', 'clean:cordova:js'], function(
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('cordova/www/js'));
 
+
 	gulp.src('src/js/sharer-cordova.js')
 		.pipe(uglify())
 		.pipe(rename({
@@ -169,9 +170,11 @@ gulp.task('cordova',['lint', 'clean:cordova:css', 'clean:cordova:js'], function(
 		.pipe(gulp.dest('cordova/www/js'));
 
 	// add our browser share to the merge directory
+	/*
 	gulp.src('src/js/sharer.js')
 		.pipe(uglify())
 		.pipe(gulp.dest('cordova/merges/browser/js'));
+	*/
 
 
 	// finally the html
