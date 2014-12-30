@@ -1,0 +1,68 @@
+<div id="meet-header-holder" meet-header title="{{event.title}}" meet="meet"></div>
+
+<article id="event" class="meet" ng-swipe-right="prev()" ng-swipe-left="next()">
+
+	<section class="wider">
+		<table id="lanes" class="table table-striped">
+			<thead>
+				<tr>
+					<th>Lane</th>
+					<th>Team</th>
+					<th>
+						Place 
+						<toggle-switch
+						    ng-model="buttons"
+						    on-label="buttons"
+						    off-label="taps">
+						<toggle-switch>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="lane in event.finishes">
+					<td>{{lane.lane}}</td>
+					<td>
+						<select ng-model="lane.team">
+							<option value="us">{{meet.us | limitTo:4}}</option>
+							<option value="them">{{meet.them | limitTo:4}}</option>		
+						</select>
+					</td>
+					<td>
+						<div class="places tap" ng-if="!buttons" ng-click="tap(lane)">
+							<span ng-repeat="i in places track by $index" ng-class="{selected: ($index+1) == lane.place}">{{$index+1}}</span>
+						</div>
+
+						<div class="btn-group" ng-if="buttons">
+        					<label 
+        						ng-repeat="place in places track by $index"
+        						class="btn btn-default" 
+        						ng-model="lane.place" 
+        						btn-radio="$index + 1"
+        					>{{ $index + 1}}</label>
+        				</div>
+
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+
+	<section class="event-buttons">
+		<button ng-click="clear()" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-remove-circle"></span> Clear</button>
+		<button ng-click="save()" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+	</section>
+
+	
+	<div class="notes">
+		<div class="buttons">
+			<button ng-if="!edit_notes" ng-click="editNotes()" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+			<button ng-if="edit_notes" ng-click="saveNotes()" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+		</div>
+		<h4>Notes:</h4>
+		<textarea ng-show="edit_notes" ng-model="notes.text" ng-focus="edit_notes" msd-elastic="\n" class="form-control animate" ></textarea>
+		<p class="notes-text" ng-show="!edit_notes" ng-bind-html="notes.text | nl2br"></p>
+	</div>
+
+</article>
+
+<meet-footer meet="meet"></meet-footer>

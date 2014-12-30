@@ -1,0 +1,19 @@
+<div id="meet-header-holder" meet-header title="vs {{meet.them}}" meet="meet"></div>
+
+<article id="meet" class="meet" ng-swipe-left="next()" ng-swipe-right="prev()">
+
+	<section id="event-list" class="wider panel panel-default">
+		<header class="panel-heading">Event List</header>
+
+		<event-list events="meet.events.list" meet-id="{{meet.id}}" class="event-list-contaier"></event-list>
+
+	</section>
+
+	<p ng-if="!done" class="in-progress">
+		<span class="glyphicon glyphicon-refresh"></span> in progress
+	</p>
+	<a ng-if="done" ng-href="#/meet/{{meet.id}}/final" class="final btn btn-success btn-lg btn-block"><span class="glyphicon glyphicon-ok-circle"></span> Final</a>
+
+</article>
+
+<meet-footer meet="meet"></meet-footer>

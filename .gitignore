@@ -1,0 +1,6 @@
+app/cordova/www
+app/cordova/platforms
+app/cordova/hooks
+app/dist
+app/node_modules
+app/src/components

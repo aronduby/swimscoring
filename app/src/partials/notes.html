@@ -1,0 +1,34 @@
+<div id="meet-header-holder">
+	<header id="meet-header">
+		<h1>
+			<a ng-click="go('/home')"><span class="glyphicon glyphicon-home"></span></a>
+			<span ng-bind-html="'Edit Notes' | headerTitle"></span>
+		</h1>
+		<div class="progress"></div>
+	</header>
+</div>
+
+<article id="edit-notes">
+	<section class="panel panel-default wider">
+		<header class="panel-heading">Event Notes</header>
+
+		<ul class="list-group">
+			<li
+				class="list-group-item"
+				ng-repeat="event in events.list"
+				ng-init="note = getNote(event.id); edit = false"
+			>
+				<div class="buttons">
+					<button ng-show="!edit" ng-click="edit = true" class="btn btn-sm btn-default"><span class="glyphicon glyphicon-pencil"></span></button>
+					<button ng-show="edit" ng-click="saveNote(note); edit = false" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-floppy-disk"></span></button>
+				</div>
+				<h4 class="list-group-item-heading">{{event.title}}</h4>
+				<p ng-show="!edit" class="note-text well" ng-bind-html="note.text | nl2br"></p>
+				<textarea ng-show="edit" ng-model="note.text" ng-focus="edit" msd-elastic="\n" class="form-control animate" ></textarea>
+				<button ng-show="edit" ng-click="note = clear(note); edit = false" class="btn btn-warning"><span class="glyphicon glyphicon-remove-circle"></span> Clear</button>
+			</li>
+		</ul>			
+	</section>
+
+	<button ng-click="go('/home')" class="btn btn-success btn-block btn-lg"><span class="glyphicon glyphicon-ok-sign"></span> Done</button>
+</article>

@@ -1,0 +1,43 @@
+<div id="meet-header-holder" meet-header title="Final" meet="meet"></div>
+
+<article id="final" class="meet" ng-swipe-right="prev()">
+
+	<h1 class="teams">
+		<span class="team">{{ meet.us }}</span>
+		<i>vs</i>
+		<span class="team">{{ meet.them }}</span>
+	</h1>
+
+	<div class="row scores">
+		<div class="score-container">
+			<div class="spacer"></div>
+			<span class="score" ng-class="{winner: score.us > score.them}">{{ score.us }}</span>
+		</div
+		><div class="score-container">
+			<div class="spacer"></div>		
+			<span class="score" ng-class="{winner: score.us < score.them}">{{ score.them }}</span>
+		</div>
+	</div>
+
+	<div class="buttons">
+		<a ng-click="share()" class="share btn btn-lg btn-block btn-success">Share</a>
+
+		<div class="row">
+			<div class="col-xs-6">
+				<a href="#/" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-home"></span></a>
+			</div>
+			<div class="col-xs-6">
+				<a ng-href="#/meet/{{meet.id}}" class="btn btn-default btn-lg btn-block"><span class="glyphicon glyphicon-list"></span></a>
+			</div>
+		</div>
+	</div>
+
+	<img class="img-responsive center-block logo" src="/layout_imgs/logo-horz@2x.png" alt="Swim Scoring" />
+
+	<div ng-if="shareTracker.active()" class="share-overlay">
+		<div class="msg">&nbsp;
+			<span us-spinner></span>
+		</div>
+	</div>
+	
+</article>

@@ -1,0 +1,10 @@
+<footer id="meet-footer">
+	<section class="us">
+		<span class="glyphicon glyphicon-star" ng-if="score.us > score.them"></span>
+		<i>{{meet.us | limitTo:(30 | media:'phone':4)}}</i> <b>{{score.us}}</b>
+	</section>
+	<section class="them">
+		<span class="glyphicon glyphicon-star" ng-if="score.us < score.them"></span>
+		<i>{{meet.them | limitTo:(30 | media:'phone':4)}}</i> <b>{{score.them}}</b>
+	</section>
+</footer>

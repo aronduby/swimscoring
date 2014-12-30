@@ -1,0 +1,38 @@
+<article id="home">
+	<div>
+		<img class="img-responsive center-block logo" src="/layout_imgs/logo-horz-stack@2x.png" alt="Swim Scoring" />
+
+		<section id="previous-meets" class="panel panel-default" ng-if="meets.length">
+			<header class="panel-heading">Previous Meets</header>
+
+			<table class="table table-bordered">
+				<tr
+					ng-repeat="meet in meets | orderBy:'created':true" 
+					ng-init="score = calcScore(meet)"
+				>
+					<td>
+						<a ng-click="go('/meet/{{meet.id}}', 'slide-left')">
+							<span class="label label-default score-them" ng-class="{'label-success': score.us < score.them}">{{score.them}}</span>
+							<span class="label label-default score-us" ng-class="{'label-success': score.us > score.them}">{{score.us}}</span>						
+							vs. {{meet.them}}
+						</a>
+					</td>
+					<td>
+						<a ng-click="go('/meet/edit/{{meet.id}}', 'slide-down')">
+							<span class="glyphicon glyphicon-cog"></span>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</section>
+
+		<p ng-if="!meets.length" class="text-center">Click the big red button to get started</p>
+
+		<footer>
+			<p><a ng-click="go('/notes')">notes</a></p>
+		</footer>
+
+	</div>
+</article>
+
+<a id="new-meet-btn" ng-click="go('/meet/new', 'slide-up')"><span class="glyphicon glyphicon-plus"></span></a>

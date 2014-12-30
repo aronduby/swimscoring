@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.aronduby.swimscoring" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>SwimScoring</name>
+    <description>
+        An app that lets you easily keep track of the score during swim meets
+    </description>
+    <author email="aron.duby@gmail.com" href="http://www.swimscoring.com">
+        Aron Duby
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+</widget>

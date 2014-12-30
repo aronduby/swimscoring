@@ -1,0 +1,120 @@
+<div id="meet-header-holder">
+	<header id="meet-header">
+		<h1>
+			<a ng-click="go('/home', meet.them ? 'slide-up' : 'slide-down')"><span class="glyphicon glyphicon-home"></span></a>
+			<span ng-bind-html="meet.them ? 'Meet Settings' : 'New Meet' | headerTitle"></span>
+		</h1>
+		<div class="progress"></div>
+	</header>
+</div>
+
+<article id="new-meet">
+	<div>
+		<form name="newMeet" ng-submit="save()" novalidate>
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.us.$valid && newMeet.us.$dirty,
+					'has-error': newMeet.us.$invalid && (newMeet.us.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="us">Your Team</label>
+
+				<input type="text" name="us" ng-model="meet.us" class="form-control" id="us" placeholder="your team's name" required ng-minlength="2" />
+
+				<div class="help-block" ng-show="newMeet.us.$error.required && newMeet.$submitted">Required!</div>
+				<div class="help-block" ng-show="newMeet.us.$error.minlength  && newMeet.$submitted">Must be at least 2 character long</div>
+			</div>
+
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.them.$valid && newMeet.them.$dirty,
+					'has-error': newMeet.them.$invalid && (newMeet.them.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="them">Opponent</label>
+
+				<input type="text" name="them" ng-model="meet.them" class="form-control" id="them" placeholder="opposing team's name" required ng-minlength="2" />
+
+				<div class="help-block" ng-show="newMeet.them.$error.required && newMeet.$submitted">Required!</div>
+				<div class="help-block" ng-show="newMeet.them.$error.minlength  && newMeet.$submitted">Must be at least 2 character long</div>
+			</div>
+
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.num_lanes.$valid && newMeet.num_lanes.$dirty,
+					'has-error': newMeet.num_lanes.$invalid && (newMeet.num_lanes.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="num_lanes">How Many Lanes are There?</label>
+
+				<select name="num_lanes" ng-model="meet.num_lanes" class="form-control" id="num_lanes" required>
+					<option value="6">6</option>
+					<option value="8">8</option>
+				</select>
+
+				<div class="help-block" ng-show="newMeet.num_lanes.$error.required && newMeet.$submitted">Required!</div>
+			</div>
+
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.us_lanes.$valid && newMeet.us_lanes.$dirty,
+					'has-error': newMeet.us_lanes.$invalid && (newMeet.us_lanes.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="us_lanes">What Lanes are Your Team In?</label>
+
+				<select name="us_lanes" ng-model="meet.us_lanes" class="form-control" id="us_lanes" required>
+					<option value="even">Even</option>
+					<option value="odd">Odd</option>
+				</select>
+
+				<div class="help-block" ng-show="newMeet.us_lanes.$error.required && newMeet.$submitted">Required!</div>
+			</div>
+
+			<!-- Not needed till customization is setup
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.scoring.$valid && newMeet.scoring.$dirty,
+					'has-error': newMeet.scoring.$invalid && (newMeet.scoring.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="scoring">Scoring</label>
+
+				<div class="btn-group">
+					<label ng-repeat="score in scoring" class="btn btn-default" ng-model="meet.scoring" btn-radio="score">{{score.title}}</label>
+				</div>
+
+				<div class="help-block" ng-show="newMeet.scoring.$error.required && newMeet.$submitted">Required!</div>
+			</div>
+
+			<div class="form-group" 
+				ng-class="{
+					'has-success': newMeet.events.$valid && newMeet.events.$dirty,
+					'has-error': newMeet.events.$invalid && (newMeet.events.$dirty || newMeet.$submitted),
+				}
+			">
+				<label class="control-label" for="events">Events</label>
+
+				<div class="btn-group">
+        			<label ng-repeat="event in events" class="btn btn-default" ng-model="meet.events" btn-radio="event">{{event.title}}</label>
+        		</div>
+
+				<div class="help-block" ng-show="newMeet.events.$error.required && newMeet.$submitted">Required!</div>
+			</div>
+			-->
+
+			<section class="event-buttons">
+				<button ng-click="go('/home', meet.them ? 'slide-up' : 'slide-down')" class="btn btn-default"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+				<button type="submit" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+			</section>			
+
+		</form>
+
+		<div ng-if="meet.id" class="danger-zone">
+			<h4>Danger Zone!</h4>
+			<button class="btn btn-danger btn-block btn-lg" ng-click="delete()"><span class="glyphicon glyphicon-remove-sign"></span> Delete Meet</button>
+			<p class="in-progress">this can not be undone</p>
+		</div>
+	</div>
+
+</article>

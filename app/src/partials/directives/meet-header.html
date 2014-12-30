@@ -1,0 +1,47 @@
+<header id="meet-header">
+	<h1>
+		<a ng-click="toggle()"><span class="glyphicon glyphicon-th-list"></span></a>
+		<span ng-bind-html="title | headerTitle"></span>
+	</h1>
+	<progressbar value="progress"></progressbar>
+</header>
+
+<nav id="meet-menu" ng-class="{'open': open}">
+
+	<header class="scores">
+		<div class="us">
+			<h3 class="score">{{ score.us }}</h3>
+			<h4 class="team">{{ meet.us }}</h4>
+		</div>
+		<div class="them">
+			<h3 class="score">{{ score.them }}</h3>
+			<h4 class="team">{{ meet.them }}</h4>
+		</div>
+
+		<progressbar value="progress"></progressbar>	
+
+		<button type="button" class="close" ng-click="close()">
+			<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+		</button>	
+	</header>
+
+	<div class="list-group" auto-active>
+		<a ng-click="$root.go('/', 'slide-up')" class="list-group-item"><span class="glyphicon glyphicon-home"></span> Home</a>
+		<a ng-click="$root.go('/meet/{{meet.id}}', 'slide-left')" class="list-group-item"><span class="glyphicon glyphicon-list"></span> Event List</a>
+	</div>
+
+	<div class="panel panel-default" auto-active>
+		<header class="panel-heading">Events</header>
+		<event-list events="meet.events.list" meet-id="{{meet.id}}"></event-list>
+	</div>
+
+	<p ng-show="!done" class="in-progress">
+		<span class="glyphicon glyphicon-refresh"></span> in progress
+	</p>
+	<div ng-show="done" class="list-group" auto-active>
+		<a ng-click="$root.go('/meet/{{meet.id}}/final', 'slide-left')" class="list-group-item"><span class="glyphicon glyphicon-ok-circle"></span> Meet Final</a>
+	</div>
+	
+</nav>
+
+<div class="overlay" ng-show="open" ng-click="close"></div>

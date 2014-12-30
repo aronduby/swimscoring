@@ -1,0 +1,14 @@
+<div class="event-list list-group">
+	<a 
+		class="list-group-item"
+		ng-repeat="event in events | orderBy:'order'"
+		ng-click="$root.go('/meet/{{meetId}}/event/{{event.id}}')"
+	>
+		<span class="indicator" ng-class="{complete: event.done}"></span>
+		<span class="title">{{ event.title }}</span>
+		<span class="scores">
+			<span class="badge" ng-class="{'bg-success': event.score.us > event.score.them}">{{ event.score.us }}</span>
+			<span class="badge" ng-class="{'bg-success': event.score.us < event.score.them}">{{ event.score.them }}</span>
+		</span>
+	</a>
+</div>

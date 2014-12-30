@@ -1,0 +1,27 @@
+{
+  "name": "swimscoring",
+  "version": "0.0.0",
+  "description": "web/cordova app to score swim meets",
+  "main": "index.html",
+  "author": "Aron Duby aron.duby@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-rename": "^1.2.0",
+    "gulp-concat": "^2.4.2",
+    "gulp-uglify": "^1.0.2",
+    "gulp-jshint": "^1.9.0",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-postcss": "^3.0.0",
+    "autoprefixer-core": "^4.0.2",
+    "gulp-cssmin": "^0.1.6",
+    "del": "^1.1.1",
+    "gulp-filter": "^2.0.0",
+    "main-bower-files": "^2.4.1",
+    "gulp-order": "^1.1.1",
+    "event-stream": "^3.2.0",
+    "gulp-html-replace": "^1.4.1",
+    "gulp-angular-templatecache": "^1.5.0",
+    "gulp-css-url-adjuster": "^0.2.3"
+  }
+}
