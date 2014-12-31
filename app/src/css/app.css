@@ -1,7 +1,7 @@
 /* app.css */
 
 body{
-    background:#e9e9e9 url(/layout_imgs/bg.jpg);
+    background:#e9e9e9 url(../layout_imgs/bg.jpg);
     width: 100vw;
     height: 100vh;
 }
