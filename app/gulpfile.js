@@ -177,7 +177,7 @@ gulp.task('cordova',['lint', 'clean:cordova:css', 'clean:cordova:js'], function(
 	*/
 
 
-	// finally the html
+	// the html
 	gulp.src('src/partials/**/*.html')
 		.pipe(templateCache('templates.js', {
 			root: 'partials/',
@@ -195,6 +195,11 @@ gulp.task('cordova',['lint', 'clean:cordova:css', 'clean:cordova:js'], function(
 
 	gulp.src('src/layout_imgs/**/*.*')
 	  .pipe(gulp.dest('cordova/www/layout_imgs'))
+
+
+	// copy over the ant.properties file for android
+	gulp.src('ant.properties')
+		.pipe(gulp.dest('cordova/platforms/android'))
 
 });
 
