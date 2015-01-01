@@ -1,0 +1,631 @@
+@import "variables.scss";
+@import "mixins.scss";
+
+// Global Components
+
+body {
+	overflow-x: hidden;
+	font-family: $body-font;
+	letter-spacing:-.03em;
+}
+
+.text-muted {
+	color: $gray;
+}
+
+.text-primary {
+	color: $brand-primary;
+}
+
+p {
+	font-size: 14px;
+	line-height: 1.75;
+}
+
+p.large {
+	font-size: 16px;
+}
+
+a,
+a:hover,
+a:focus,
+a:active,
+a.active {
+	outline: none;
+}
+
+a {
+	color: $brand-primary;
+}
+
+a:hover,
+a:focus,
+a:active,
+a.active {
+	color: darken($brand-primary, 10%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-font;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+i{
+	font-style: normal;
+	font-weight: 100;
+}
+
+.img-centered {
+	margin: 0 auto;
+}
+
+.bg-light-gray {
+	background-color: $gray-lighter;
+}
+
+.bg-darkest-gray {
+	background-color: $gray-darkest;
+}
+
+// Restyled Primary Buttons
+
+.btn-primary {
+	@include button-variant(white, $brand-primary, $brand-primary);
+	font-family: $heading-font;
+	font-weight: 700;
+}
+
+.btn-xl {
+	@include button-variant(white, $brand-primary, $brand-primary);
+	font-family: $heading-font;
+	font-weight: 700;
+	border-radius: 3px;
+	font-size: 18px;
+	padding: 20px 40px;
+}
+
+// Custom Navigation Bar
+.navbar{
+	font-size:16px;
+}
+
+.navbar-default {
+	background-color: $brand-darker;
+	border-color: transparent;
+
+	.navbar-brand {
+		color: $brand-primary;
+		font-family: $heading-font;
+		text-transform: uppercase;
+		padding:5px;
+
+		&:hover,
+		&:focus,
+		&:active,
+		&.active {
+			color: darken($brand-primary, 10%);
+		}
+
+		img{
+			height:100%;
+			filter: brightness(0) invert(1);
+		}
+	}
+
+	.navbar-collapse {
+		border-color: fade(white, 2%);
+	}
+
+	.navbar-toggle {
+		background-color: $brand-primary;
+		border-color: $brand-primary;
+		.icon-bar {
+			background-color: white;
+		}
+		&:hover,
+		&:focus {
+			background-color: $brand-primary;
+		}
+	}
+	.nav {
+		li {
+			a {
+				font-family: $heading-font;
+				text-transform: uppercase;
+				font-weight: 800;
+				color:#fff;
+
+				&:hover,
+				&:focus {
+					color: $brand-primary;
+					outline: none;
+				}
+			}
+		}
+	}
+	.navbar-nav>.active>a {
+		border-radius: 0;
+		color: white;
+		background-color: $brand-primary;
+	}
+	.navbar-nav>.active>a:hover,
+	.navbar-nav>.active>a:focus {
+		color: white;
+		background-color: darken($brand-primary, 10%);
+	}
+}
+
+@media(min-width:768px) {
+	.navbar-default {
+		background-color: transparent;
+		padding: 25px 0;
+		-webkit-transition: padding 0.3s;
+		-moz-transition: padding 0.3s;
+		transition: padding 0.3s;
+		border: none;
+
+		.navbar-brand {
+			font-size: 2em;
+			padding:0;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
+
+			img{
+				filter: none;
+			}
+		}
+
+		.navbar-nav>.active>a {
+			border-radius: 3px;
+		}
+
+		.nav li a{
+			color: #85858a;
+		}
+
+	}
+	.navbar-default.navbar-shrink {
+		background-color: $brand-darker;
+		padding: 10px 0;
+
+		.navbar-brand {
+			font-size: 1.5em;
+
+			img{
+				filter: brightness(0) invert(1);
+			}
+		}
+
+		.nav li a{
+			color:#fff;
+		}
+	}
+}
+
+header {
+	font-family: $heading-font;
+	background-image: url('/img/bg.jpg');
+	text-align: center;
+	color: #757679;
+	box-shadow:inset 0 0 50px rgba(0,0,0,.1);
+
+	.intro-text {
+		padding-top: 125px;
+		padding-bottom: 60px;
+
+		.logo{
+			font-size:0;
+			line-height:0;
+			width:100%;
+			margin:0 auto;
+		}
+			.logo img{
+				width:100%;
+				max-width:360px;
+			}
+
+		.tagline{
+			font-family: $heading-font;
+			font-weight: 100;
+			font-size:20px;
+			line-height:1.3em;
+			margin-bottom:1em;
+		}
+
+		.stores{
+			margin:1em;
+
+			& > div{
+				margin-bottom:.5em;
+			}
+
+			a{
+				display:block;
+				font-weight:bold;
+				text-transform:uppercase;
+				text-align:left;
+				color:#8c8c8c;
+				font-size:18px;
+				padding:.5em;
+				line-height:1em;
+
+				span{
+					display:block;
+					margin:5px auto;
+					width:150px;
+				}
+
+				span::before{
+					content:'';
+					display:block;
+					width:40px;
+					height:40px;
+					background-size: 100% 100%;
+					float:left;
+					margin-right:10px;
+				}
+				
+				i{
+					display:block;
+					text-transform:none;
+					font-size:14px;
+				}
+			}
+
+			.android a span::before{ background-image: url(/img/google-play-symbol.svg); }
+			.ios a span::before{ background-image: url(/img/app-store-symbol.svg); }
+		}
+	}
+}
+
+@media(min-width:500px){
+	.stores > div{
+		display:inline-block;
+	}
+}
+
+
+// Global Section Styles
+
+section {
+	position: relative;
+	padding: 100px 0;
+
+	h2.section-heading {
+		font-size: 40px;
+		margin-top: 0;
+		margin-bottom: 15px;
+	}
+	h3.section-subheading {
+		font-size: 16px;
+		font-family: $heading-font;
+		text-transform: none;
+		font-style: italic;
+		font-weight: 400;
+		margin-bottom: 75px;
+	}
+}
+
+@media(min-width:768px) {
+	section {
+		padding: 150px 0;
+	}
+}
+
+// Features Section
+#features h4 {
+	margin: 15px 0;
+}
+	#features .col-sm-4{
+		margin-bottom:3em;
+	}
+
+	#features .submit-features{
+		position: absolute;
+		bottom:10px;
+		text-align:center;
+		opacity:.5;
+		font-size:.9em;
+		left:15px;
+		right:15px;
+	}
+
+@media(min-width:1000px){
+	#features .col-sm-4{
+		margin-bottom:0;
+	}
+}
+
+// Portfolio Section
+
+#screenshot {
+
+	.screenshot-item {
+		position:relative;
+		margin: 0 0 15px;
+		right: 0;
+
+		.fake-img{
+			display:block;
+			background-size:100%;
+			background-position:50%;
+			width:100%;
+			padding-top:60%;
+		}
+
+		.screenshot-link {
+			display: block;
+			position: relative;
+			max-width: 400px;
+			margin: 0 auto;
+
+			.screenshot-hover {
+				background: fade($brand-primary, 90%);
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+				transition: all ease 0.5s;
+				-webkit-transition: all ease 0.5s;
+				-moz-transition: all ease 0.5s;
+				&:hover {
+					opacity: 1;
+				}
+
+				.screenshot-hover-content {
+					position: absolute;
+					width: 100%;
+					height: 20px;
+					font-size: 20px;
+					text-align: center;
+					top: 50%;
+					margin-top: -12px;
+					color: white;
+
+					i {
+						margin-top: -12px;
+					}
+
+					h3,
+					h4 {
+						margin: 0;
+					}
+				}                
+			}            
+		}
+
+		.screenshot-caption {
+			max-width: 400px;
+			margin: 0 auto;
+			text-align: center;
+			padding:15px 25px 25px;
+
+			h4 {
+				text-transform: none;
+				margin: 0;
+			}
+
+			p {
+				font-family: $heading-font;
+				font-size: 16px;
+				margin: 0;
+			}
+		}
+	}
+
+	* {
+		z-index: 2;
+	}
+}
+
+@media(min-width:767px) {
+	#sheetshot {
+		.sheetshot-item {
+			margin: 0 0 30px;
+		}
+	}
+}
+
+
+// Contact Section
+
+section#contact {
+	background-color: $gray-darkest;
+	background-image: url('../img/map-image.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	.section-heading {
+		color: white;
+	}
+
+	.form-group {
+		margin-bottom: 25px;
+		input,
+		textarea {
+			padding: 20px;
+		}
+		input.form-control {
+			height: auto;
+		}
+		textarea.form-control {
+			height: 236px;
+		}
+	}
+
+	.form-control:focus {
+		border-color: $brand-primary;
+		box-shadow: none;
+	}
+	::-webkit-input-placeholder {
+	   font-family: $heading-font;
+	   font-weight: 700;
+	   color: $placeholder-text;
+	}
+	:-moz-placeholder { /* Firefox 18- */
+	   font-family: $heading-font;
+	   font-weight: 700;
+	   color: $placeholder-text;
+	}
+	::-moz-placeholder {  /* Firefox 19+ */
+	   font-family: $heading-font;
+	   font-weight: 700;
+	   color: $placeholder-text;
+	}
+	:-ms-input-placeholder {  
+		font-family: $heading-font;
+	   font-weight: 700;
+	   color: $placeholder-text;
+	}
+	.text-danger {
+		color: $brand-danger;
+	}
+}
+
+// Footer
+
+footer {
+	padding: 25px 0;
+	text-align: center;
+	span.copyright {
+		font-family: $heading-font;
+		text-transform: none;
+	}
+	ul.quicklinks {
+		margin-bottom: 0;
+		line-height: 40px;
+		font-family: $heading-font;
+		text-transform: none;
+	}
+}
+
+// Social Buttons
+
+ul.social-buttons {
+	margin-bottom: 0;
+	li {
+		a {
+			display: block;
+			background-color: $gray-darkest;
+			height: 40px;
+			width: 40px;
+			border-radius: 100%;
+			font-size: 20px;
+			line-height: 40px;
+			color: white;
+			outline: none;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: $brand-primary;
+			}
+		}
+	}
+}
+
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:active:focus {
+	outline: none;
+}
+
+.portfolio-modal {
+	.modal-content {
+		border-radius: 0;
+		background-clip: border-box;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		border: none;
+		min-height: 100%;
+		padding: 100px 0;
+		text-align: center;
+		h2 {
+			margin-bottom: 15px;
+			font-size: 3em;
+		}
+		p {
+			margin-bottom: 30px;
+		}
+		p.item-intro {
+			margin: 20px 0 30px;
+			font-family: $heading-font;
+			font-style: italic;
+			font-size: 16px;
+		}
+		ul.list-inline {
+			margin-bottom: 30px;
+			margin-top: 0;
+		}
+		img {
+			margin-bottom: 30px;
+		}
+	}
+	.close-modal {
+		position: absolute;
+		width:75px;
+		height:75px;
+		background-color:transparent;
+		top: 25px;
+		right: 25px;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.3;
+		}
+		.lr {
+			height:75px;
+			width:1px;
+			margin-left:35px;
+			background-color:$gray-darkest;
+			transform: rotate(45deg);
+			-ms-transform: rotate(45deg);
+			/* IE 9 */
+			-webkit-transform: rotate(45deg);
+			/* Safari and Chrome */
+			z-index:1051;
+			.rl {
+				height:75px;
+				width:1px;
+				background-color:$gray-darkest;
+				transform: rotate(90deg);
+				-ms-transform: rotate(90deg);
+				/* IE 9 */
+				-webkit-transform: rotate(90deg);
+				/* Safari and Chrome */
+				z-index:1052;
+			}            
+		}        
+	}
+	.modal-backdrop {
+		opacity: 0;
+		display: none;
+	}
+}
+
+// Highlight Color Customization
+
+::-moz-selection {
+	text-shadow: none;
+	background: $brand-primary;
+}
+
+::selection {
+	text-shadow: none;
+	background: $brand-primary;
+}
+
+img::selection {
+	background: transparent;
+}
+
+img::-moz-selection {
+	background: transparent;
+}
+
+body {
+	webkit-tap-highlight-color: $brand-primary;
+}
