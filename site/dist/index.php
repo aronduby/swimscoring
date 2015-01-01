@@ -11,12 +11,7 @@
 
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,400italic|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
 
-	<!-- build:css css/combined.css -->
-	<link href="components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-	<link href="components/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" type="text/css" href="components/magnific-popup/dist/magnific-popup.css">
-	<link href="css/agency.css" rel="stylesheet">
-	<!-- endbuild -->
+	<link rel="stylesheet" href="css/combined.css">
 
 </head>
 
@@ -221,18 +216,7 @@
 		</div>
 	</footer>
 
-	<!-- build:js js/combined.js -->
-	<script src="components/jquery/dist/jquery.js"></script>
-	<script src="components/bootstrap/dist/js/bootstrap.js"></script>
-	<script src="components/jquery-easing/jquery.easing.js"></script>
-	<script src="components/classie/classie.js"></script>
-	<script src="components/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
-
-	<script src="js/jqBootstrapValidation.js"></script>
-	<script src="js/cbpAnimatedHeader.js"></script>
-	<script src="js/contact_me.js"></script>
-	<script src="js/agency.js"></script>
-	<!-- endbuild -->
+	<script src="js/combined.js"></script>
 
 </body>
 

@@ -2,29 +2,16 @@
 var gulp = require('gulp');
 
 // Our plugins
-var jshint         = require('gulp-jshint'),
-	concat         = require('gulp-concat'),
-	uglify         = require('gulp-uglify'),
-	rename         = require('gulp-rename'),
-	sourcemaps     = require('gulp-sourcemaps'),
-	postcss        = require('gulp-postcss'),
-	autoprefixer   = require('autoprefixer-core'),
-	cssmin         = require('gulp-cssmin'),
-	del            = require('del'),
-	filter         = require('gulp-filter'),
-	order          = require('gulp-order'),
-	htmlreplace    = require('gulp-html-replace'),
-	sass		   = require('gulp-sass');
-
-
-
-
-gulp.task('sass', function() {
-	gulp.src('sass/*.scss')
-		.pipe(sass())
-		.pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
-		.pipe(gulp.dest('css'));
-});
+var 
+	jshint       = require('gulp-jshint'),
+	uglify       = require('gulp-uglify'),
+	postcss      = require('gulp-postcss'),
+	autoprefixer = require('autoprefixer-core'),
+	cssmin       = require('gulp-cssmin'),
+	del          = require('del'),
+	sass         = require('gulp-sass'),
+	useref       = require('gulp-useref'),
+	gulpif       = require('gulp-if');
 
 
 // Clean our CSS dist
@@ -37,39 +24,6 @@ gulp.task('clean:js', function(cb) {
 	del([ 'dist/js/**' ], cb);
 });
 
-// CSS 
-gulp.task('styles', ['clean:css'], function() {
-
-	var styles = gulp.src('src/css/**/!(app)*.css')
-		.pipe(concat('styles.css'))
-		.pipe(cssUrlAdjuster({
-			replace: ['../fonts', 'fonts']
-		}));
-
-	var component_styles = gulp.src(mainBowerFiles())
-		.pipe(filter('*.css'))
-		.pipe(concat('components.css'));
-
-	var app = gulp.src('src/css/app.css')
-		.pipe(concat('app.css'));
-
-	es.concat(styles, component_styles, app)
-		.pipe(order([
-			'styles.css',
-			'components.css',
-			'app.css'
-		]))
-		.pipe(sourcemaps.init())
-			.pipe(concat('app.min.css'))
-			.pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
-			.pipe(cssmin())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('dist/css'));
-
-	gulp.src('src/css/fonts/**/*.*')
-		.pipe(gulp.dest('dist/css/fonts'));
-});
-
 // Linter
 gulp.task('lint', function(){
 	return gulp.src('src/js/*.js')
@@ -77,43 +31,36 @@ gulp.task('lint', function(){
 		.pipe(jshint.reporter('default'));
 });
 
-// Concat & Minify JS
-gulp.task('scripts', ['clean:js'], function(){
-
-	var scripts = ['src/js/!(sharer)*.js'];
-
-	gulp.src(mainBowerFiles().concat(scripts))
-		.pipe(filter('*.js'))
-		.pipe(sourcemaps.init())
-			.pipe(concat('app.min.js'))
-			.pipe(uglify())
-		.pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest('dist/js'));
-
-	gulp.src('src/js/sharer.js')
-		.pipe(uglify())
-		.pipe(gulp.dest('dist/js'));
+gulp.task('sass', function() {
+	// this will automatically include the proper files
+	gulp.src('sass/agency.scss')
+		.pipe(sass())
+		.pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+		.pipe(gulp.dest('css'));
 });
 
 // Handle HTML replacement
 gulp.task('html', function() {
 
-	gulp.src('src/partials/**/*.html')
-		.pipe(templateCache('templates.js', {
-			root: 'partials/',
-			module: 'myApp'
-		}))
-		.pipe(gulp.dest('dist/js'));
+	var assets = useref.assets();
 
-	gulp.src('src/index.html')
-		.pipe(htmlreplace({
-			'js': ['js/app.min.js', 'js/templates.js'],
-			'css': 'css/app.min.css'
-		}))
+	gulp.src('index.php')
+		.pipe(assets)
+		.pipe(gulpif('*.js', uglify()))
+		.pipe(gulpif('*.css', cssmin()))
+		.pipe(assets.restore())
+		.pipe(useref())
 		.pipe(gulp.dest('dist'));
 
-	gulp.src('src/layout_imgs/**/*.*')
-	  .pipe(gulp.dest('dist/layout_imgs'))
+
+	gulp.src('mail/**/*.*')
+		.pipe(gulp.dest('dist/mail'));
+
+	gulp.src('img/**/*.*')
+		.pipe(gulp.dest('dist/img'));
+
+	gulp.src('components/font-awesome/fonts/**/*.*')
+		.pipe(gulp.dest('dist/fonts'));
 });
 
 
@@ -125,4 +72,4 @@ gulp.task('watch', function() {
 });
 
 // Default task
-gulp.task('default',['lint','scripts', 'styles', 'html', 'watch']);
+gulp.task('default',['lint', 'sass', 'html', 'watch']);
