@@ -1,7 +1,6 @@
-/* ios7 safari viewport fix */
-viewportUnitsBuggyfill.init();
-
 /* Main App */
+window.viewportUnitsBuggyfill.init();
+
 (function(window, document, undefined){ 'use strict';
 
 	// Declare app level module which depends on filters, and services

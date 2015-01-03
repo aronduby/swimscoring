@@ -10,6 +10,8 @@
 
 	<link rel="shortcut icon" href="favicon.ico" />	
 
+	<script src="http://192.168.1.131:9999/target/target-script-min.js#anonymous"></script>
+
 	<!-- build:css -->
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
 	<link rel="stylesheet" type="text/css" href="css/lumen/bootstrap.css">
@@ -20,15 +22,15 @@
 </head>
 <body ng-cloak>
 
-	<div class="container ss-animate" ng-class="pageAnimationClass" ng-view></div>
+	<div class="container " ng-class="pageAnimationClass" ng-view></div>
 
 	<!-- build:cordova -->
 
 	<!-- endbuild -->
 
 	<!-- build:js -->
-    <script src="components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
-    
+	<script src="js/modernizr.custom.js"></script>
+	<script src="components/viewport-units-buggyfill/viewport-units-buggyfill.js"></script>
 	<script src="components/lodash/dist/lodash.min.js"></script>
 	<script src="components/fabric/dist/fabric.min.js"></script>
 	<script src="js/fabric.textwithletterspacing.js"></script>

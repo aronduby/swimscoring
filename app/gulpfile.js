@@ -54,7 +54,7 @@ gulp.task('styles', ['clean:css'], function() {
 		]))
 		.pipe(sourcemaps.init())
 			.pipe(concat('app.min.css'))
-			.pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+			.pipe(postcss([ autoprefixer({ browsers: ['last 2 version', 'android >= 4.3'] }) ]))
 			.pipe(cssmin())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/css'));
@@ -143,7 +143,7 @@ gulp.task('cordova',['lint', 'clean:cordova:css', 'clean:cordova:js'], function(
 			'app.css'
 		]))
 		.pipe(concat('app.min.css'))
-		.pipe(postcss([ autoprefixer({ browsers: ['last 2 version'] }) ]))
+		.pipe(postcss([ autoprefixer({ browsers: ['last 2 version', 'android >= 4.3'] }) ]))
 		.pipe(cssmin())
 		.pipe(gulp.dest('cordova/www/css'));
 
