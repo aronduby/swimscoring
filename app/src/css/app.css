@@ -502,12 +502,16 @@ h1,h2,h3,h4,h5,h6,
 
 #meet-menu .event-list{}
 
-    #meet-menu .event-list .indicator{
-        width:10px;
-        height:10px;
-        margin:0 12px 0 0;
-    }
+    #meet-menu .event-list .indicator{ width:26px; }
+        #meet-menu .event-list .indicator::after{
+            width:10px;
+            height:10px;
+            margin:0 0 0 0;
+        }
 
+    #meet-menu .event-list .scores{
+        width:68px;
+    }
     #meet-menu .event-list .badge{
         font-size:12px;
         width:22px;
@@ -606,40 +610,46 @@ h1,h2,h3,h4,h5,h6,
 */
 .event-list{
     margin-bottom:0;
+    display:table;
+    width:100%;
+    table-layout:fixed;
 }
 .event-list a{
-    display:flex;
-    align-items:center;
+    display:table-row;
 }
-    .event-list a.list-group-item:first-child,
-    .event-list a.list-group-item:last-child{
-        border-radius:0;
-    }
-        .event-list a .title{
-            flex:1;
-        }
-
-    .event-list a span{
+    .event-list a > span{
+        display:table-cell;
         vertical-align:middle;
+        text-align:left;
+        padding:8px;
+        border-bottom:1px solid #ddd;
     }
 
     .event-list .indicator{
-        display:inline-block;
-        width:20px;
-        height:20px;
-        background:#e2e2e2;
-        border-radius:50%;
-        margin-right:1rem;
+        width:36px;
     }
-        .event-list .indicator.complete{
-            background:#75caeb !important;
+        .event-list .indicator::after{
+            content:'';
+            display:block;
+            margin:0 auto;
+            width:20px;
+            height:20px;
+            background:#e2e2e2;
+            border-radius:50%;
         }
+            .event-list .indicator.complete::after{
+                background:#75caeb !important;
+            }
 
+    .event-list .scores{
+        width:84px;
+    }
     .event-list .badge{
         font-family:'Roboto Condensed', Roboto, Helvetica, sans-serif;
         font-weight:bold;
         font-size:16px;
         letter-spacing:-.06em;
+        text-align:center;
         width:30px;
         line-height:30px;
         margin-left:2px;
