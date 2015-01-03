@@ -839,7 +839,7 @@ textarea.animate:focus {
             font-family:'Roboto Condensed', Roboto, Helvetica, sans-serif;
             font-weight:Bold;
             color:#58585a;
-            font-size:20vw;
+            font-size:60px;
             letter-spacing:-.08em;
             text-align:center;
             border-radius:50%;
@@ -848,6 +848,9 @@ textarea.animate:focus {
             flex-direction:column;
             justify-content:center;
         }
+            .cssvhunit #final .scores .score{
+                font-size:20vw;    
+            }
             #final .scores .winner{
                 top:-6px;
                 /* line-height:calc(50vw - 15px - 5px - 3vw); */
