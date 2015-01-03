@@ -704,6 +704,8 @@ table#lanes{
         top:5px;
         width:70px;
     }
+        #lanes .toggle-switch > div{ width:156px; }
+        #lanes .toggle-switch .switch-off{ left:-48px; }
 
     #lanes select{
         width:60px;
