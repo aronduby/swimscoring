@@ -1,3 +1,6 @@
+/* ios7 safari viewport fix */
+viewportUnitsBuggyfill.init();
+
 /* Main App */
 (function(window, document, undefined){ 'use strict';
 

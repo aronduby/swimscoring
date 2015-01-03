@@ -2,6 +2,9 @@ app/cordova/www
 app/cordova/platforms
 app/cordova/hooks
 app/dist
+app/cordova/help
 
 *node_modules*
 *components*
+*.DS_Store
+*npm-debug.log
