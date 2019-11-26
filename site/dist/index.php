@@ -53,22 +53,22 @@
 			<div class="intro-text">
 				<h1 class="logo"><i>Swim</i>Scoring <img src="img/logo-horz-stack.svg" /></h1>
 				<p class="tagline">No more guessing, no more waiting, and no more notepads and pencils&hellip; it's the 21<sup>st</sup> century dang it!</p>
-				<div class="stores">
-					<div class="android">
-						<a class="btn btn-default btn-block" href="https://play.google.com/store/apps/details?id=com.aronduby.swimscore">
+                <div class="stores">
+                    <div class="android">
+                        <a class="btn btn-default disabled btn-block">
 							<span>
-								<i>Available on</i>	Google Play
+								<i>Previously on</i>	Google Play
 							</span>
-						</a>
-					</div>
-					<div class="ios">
-						<a class="btn btn-default disabled btn-block">
+                        </a>
+                    </div>
+                    <div class="ios">
+                        <a class="btn btn-default disabled btn-block">
 							<span>
-							<i>Coming Soon(ish)</i> App Store
+							<i>Not Coming to</i> App Store
 							</span>
-						</a>
-					</div>
-				</div>
+                        </a>
+                    </div>
+                </div>
 			</div>
 		</div>
 	</header>
